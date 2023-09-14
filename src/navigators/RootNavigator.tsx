@@ -39,7 +39,7 @@ function RootNavigator(){
         }}
         >
 <Tab.Screen
-    name='Ana Sayfa'
+    name='AnaSayfa'
     component={HomeNavigator}
     options={{
         tabBarIcon: ({color})=> (
@@ -57,7 +57,7 @@ function RootNavigator(){
     }}
 />
 <Tab.Screen
-name="list"
+name="List"
 component={HomeNavigator}
 options={{
     tabBarButton: (props) => <CustomTabBarButton {...props}/>

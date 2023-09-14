@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import categoriesGetir from "../../../assets/categoriesGetir";
 import { Category } from "../../models";
-import CategoryItem from './../CategoryItem'
+import CategoryItem from './../CategoryItem';
+
 function index() {
+   
     const [categories, setCategories] = useState(categoriesGetir);
     return (
         <View>
