@@ -3,10 +3,25 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen'
 import {Image,Text} from 'react-native';
 import CategoryFilterScreen from './../screens/CategoryFilterScreen';
-
+import ProductDetailScreen from './../screens/ProductDetailsScreen'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 const Stack = createStackNavigator();
 
-function HomeNavigator() {
+function MyStack({navigation,route}) {
+  const tabHiddenRoutes = ["ProductDetails","CartScreen"];
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    console.log("Route Name is ", routeName);
+    if (tabHiddenRoutes.includes(routeName)) {
+      console.log("Kapat ", routeName);
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      console.log("Aç ", routeName);
+      navigation.setOptions({ tabBarStyle: { display: "true" } });
+    }
+  }, [navigation, route]);
   return (
     <Stack.Navigator>
         <Stack.Screen
@@ -33,8 +48,36 @@ function HomeNavigator() {
             )
         }}
         />
+<Stack.Screen
+options={{
+  headerBackTitleVisible:false,
+  headerRight:()=> (
+    <TouchableOpacity>
+      <Text>fav</Text>
+    </TouchableOpacity>
+  ),
+  headerLeft:() => (
+<TouchableOpacity onPress={() => navigation.goBack()}>
+  <Text>X</Text>
+</TouchableOpacity>
+  ),
+  headerTitle:() => (
+    <Text>detay</Text>
+  )
+}}
+name="ProductDetails"
+component={ProductDetailScreen}
+/>
+
+
+        
     </Stack.Navigator>
   )
+  return 
 }
 
-export default HomeNavigator
+export default function HomeNavigator({navigation,route}){
+  return <MyStack navigation = {navigation} route={route}/>
+
+}
+
