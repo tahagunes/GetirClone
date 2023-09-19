@@ -24,7 +24,6 @@ function index({
   //const [cartItems,setCartItems] = useState<Product[]>()
   
 
-  console.log("Zınk route params are ",route.params)
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const getProductsPrice = () => {
     let total = 0;
