@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "GetirClone",
-    "scheme":"getir",
+    "scheme": "getir",
     "slug": "GetirClone",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,16 +16,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ttahaa70.GetirClone"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ttahaa70.GetirClone"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e6f4e163-b8e9-460b-af10-cd4a33570886"
+      }
     }
   }
 }
