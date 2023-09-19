@@ -32,12 +32,9 @@ function MyStack({ navigation, route,cartItems,clearCart }:{cartItems:Product[],
   const [totalPrice,setTotalPrice] = useState<number>(0)
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    console.log("Route Name is ", routeName);
     if (tabHiddenRoutes.includes(routeName)) {
-      console.log("Kapat ", routeName);
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      console.log("Aç ", routeName);
       navigation.setOptions({ tabBarStyle: { display: "true" } });
     }
   }, [navigation, route]);

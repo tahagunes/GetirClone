@@ -5,10 +5,30 @@ import 'react-native-gesture-handler';
 //Redux
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
+import * as Linking from 'expo-linking';
+
+const prefix = Linking.createURL('/'); 
 export default function App() {
+  const linking= {
+    prefixes:[prefix],
+    config: {
+      screens: {
+        Sohbet: {
+          screens:{
+            CartScreen:{
+            path:"cartScreen/:message",
+            parse: {
+              message: (message:string) => `${message}`,
+            },
+            }
+          }
+        }
+      }
+    }
+  }
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <RootNavigator />
       </NavigationContainer>
     </Provider>
